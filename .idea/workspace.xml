@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e896eda-9844-43ca-8e85-9c740759e6a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/A1_search/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/A1_search/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/A1_search/autograder.py" beforeDir="false" afterPath="$PROJECT_DIR$/A1_search/autograder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/A1_search/solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/A1_search/solution.py" afterDir="false" />
@@ -20,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/A2_multiagent/multiAgents.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="362" column="22" lean-forward="true" selection-start-line="362" selection-start-column="22" selection-end-line="362" selection-end-column="22" />
+            <state relative-caret-position="314">
+              <caret line="374" column="83" selection-start-line="374" selection-start-column="83" selection-end-line="374" selection-end-column="83" />
               <folding>
                 <element signature="e#659#672#0" expanded="true" />
               </folding>
@@ -278,8 +277,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/A2_multiagent/multiAgents.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="362" column="22" lean-forward="true" selection-start-line="362" selection-start-column="22" selection-end-line="362" selection-end-column="22" />
+        <state relative-caret-position="314">
+          <caret line="374" column="83" selection-start-line="374" selection-start-column="83" selection-end-line="374" selection-end-column="83" />
           <folding>
             <element signature="e#659#672#0" expanded="true" />
           </folding>

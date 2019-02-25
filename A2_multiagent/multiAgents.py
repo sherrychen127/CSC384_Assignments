@@ -372,22 +372,31 @@ def betterEvaluationFunction(currentGameState):
     for i in range(len(curScaredTimes)):
         ScaredTimes = curScaredTimes[i]
         curGhost = curGhostStates[i]
-        ghost_dist = mahattan_dist(curGhost.getPosition(), curPos)
-        if ScaredTimes > 0: #if ghost is scared
-            if ghost_dist< 8:
-                score += 2*(8 - ghost_dist) ** 2
-            if pill_dist < 5:
-                score += 1/(1+pill_dist)
-        else:
-            #score += ghost_dist * 4
-            if ghost_dist<7:
-                #score += ghost_dist**2
-                score -= 2*(7 - ghost_dist) ** 2
-        #score += math.sqrt(ScaredTimes)/2
+        ghost_dist = mahattan_dist(curGhost.getPosition(), curPos) #add ghost score
+        scared = ScaredTimes > 0
+        score += ghost_score(ghost_dist, pill_dist, scared)
     for food in curFood:
         food_dist = min(food_dist, mahattan_dist(food, curPos))
-    score += 3/(1+food_dist)+ 2/(1+len(curFood))#1.5
-    score += 0.4*curScore #0.4
+    score += food_score(food_dist, curFood) #add the food score
+    score += 0.4*curScore #add current score
+    return score
+
+
+def ghost_score(ghost_dist, pill_dist, scared): #helper function to compute the heuristic of ghost distance
+    score = 0
+    if scared:
+        if ghost_dist <= 8:
+            score += 2 * (8 - ghost_dist) ** 2
+        if pill_dist <= 8:
+            score += 1 / (1 + pill_dist)
+    else:
+        if ghost_dist <= 7:
+            # score += ghost_dist**2
+            score -= 2 * (7 - ghost_dist) ** 2
+    return score
+
+def food_score(food_dist, curFood):
+    score = 3/(1+food_dist)+ 2/(1+len(curFood))#1.5
     return score
 
 
