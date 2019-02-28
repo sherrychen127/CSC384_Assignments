@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e896eda-9844-43ca-8e85-9c740759e6a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/A1_search/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/A1_search/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A1_search/autograder.py" beforeDir="false" afterPath="$PROJECT_DIR$/A1_search/autograder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A1_search/solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/A1_search/solution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A1_search/tips.txt" beforeDir="false" afterPath="$PROJECT_DIR$/A1_search/tips.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/A2_multiagent/multiAgents.py" beforeDir="false" afterPath="$PROJECT_DIR$/A2_multiagent/multiAgents.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/A2_multiagent/multiAgents.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="374" column="83" selection-start-line="374" selection-start-column="83" selection-end-line="374" selection-end-column="83" />
+            <state relative-caret-position="609">
+              <caret line="396" column="27" selection-start-line="396" selection-start-column="27" selection-end-line="396" selection-end-column="27" />
               <folding>
                 <element signature="e#659#672#0" expanded="true" />
               </folding>
@@ -119,8 +116,8 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="369" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="475" />
     <option name="y" value="22" />
     <option name="width" value="911" />
     <option name="height" value="711" />
@@ -131,7 +128,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -139,28 +135,11 @@
               <item name="CSC384_Assignments" type="b2602c69:ProjectViewProjectNode" />
               <item name="CSC384_Assignments" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CSC384_Assignments" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSC384_Assignments" type="462c0819:PsiDirectoryNode" />
-              <item name="A2_multiagent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSC384_Assignments" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSC384_Assignments" type="462c0819:PsiDirectoryNode" />
-              <item name="A2_multiagent" type="462c0819:PsiDirectoryNode" />
-              <item name="test_cases" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSC384_Assignments" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSC384_Assignments" type="462c0819:PsiDirectoryNode" />
-              <item name="A2_multiagent" type="462c0819:PsiDirectoryNode" />
-              <item name="test_cases" type="462c0819:PsiDirectoryNode" />
-              <item name="q3" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -241,10 +220,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1556791" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15488483" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -277,8 +256,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/A2_multiagent/multiAgents.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="374" column="83" selection-start-line="374" selection-start-column="83" selection-end-line="374" selection-end-column="83" />
+        <state relative-caret-position="609">
+          <caret line="396" column="27" selection-start-line="396" selection-start-column="27" selection-end-line="396" selection-end-column="27" />
           <folding>
             <element signature="e#659#672#0" expanded="true" />
           </folding>

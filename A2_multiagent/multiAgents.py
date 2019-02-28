@@ -365,7 +365,8 @@ def betterEvaluationFunction(currentGameState):
     curPill = currentGameState.getCapsules()
 
     curScaredTimes = [ghostState.scaredTimer for ghostState in curGhostStates]
-    food_dist = float("inf") #initialize distance to food
+
+    #food_dist = float("inf") #initialize distance to food
     pill_dist = float("inf") #initialize pill dist
     for pill in curPill:
         pill_dist = min(pill_dist, mahattan_dist(pill, curPos))
@@ -375,10 +376,15 @@ def betterEvaluationFunction(currentGameState):
         ghost_dist = mahattan_dist(curGhost.getPosition(), curPos) #add ghost score
         scared = ScaredTimes > 0
         score += ghost_score(ghost_dist, pill_dist, scared)
-    for food in curFood:
-        food_dist = min(food_dist, mahattan_dist(food, curPos))
-    score += food_score(food_dist, curFood) #add the food score
-    score += 0.4*curScore #add current score
+    #for food in curFood:
+    #    food_dist = min(food_dist, mahattan_dist(food, curPos))
+    score += food_score(currentGameState, curPos, curFood) #add the food score
+    score += 2/(1+pill_dist)
+    score += 0.6*curScore #add current score 0.4
+    if currentGameState.isWin():
+        score += 10000000
+    if currentGameState.isLose():
+        score = -10000000
     return score
 
 
@@ -387,18 +393,38 @@ def ghost_score(ghost_dist, pill_dist, scared): #helper function to compute the 
     if scared:
         if ghost_dist <= 8:
             score += 2 * (8 - ghost_dist) ** 2
-        if pill_dist <= 8:
-            score += 1 / (1 + pill_dist)
     else:
-        if ghost_dist <= 7:
-            # score += ghost_dist**2
-            score -= 2 * (7 - ghost_dist) ** 2
+        if ghost_dist <= 3:
+            score -= 2 * (4 - ghost_dist) ** 2
     return score
 
-def food_score(food_dist, curFood):
-    score = 3/(1+food_dist)+ 2/(1+len(curFood))#1.5
-    return score
+def food_score(gameStates, curPos, curFood):
+    score = 0
+    w2 = 2
+    if len(curFood) == 1:
+        w2 = 15
+    if len(curFood) == 0:
+        return 10000
+    food_dist = []
+    for food in curFood:
+        if curPos == curFood:
+            score += 1000
+        food_dist.append(mahattan_dist(curPos, food))
+    min_food_dist = min(food_dist)
+    while len(curFood)>0:
+        score += min(food_dist)
+        minInd = np.argmin(food_dist)
+        curPos = curFood[minInd]
+        curFood.pop(minInd)
+        if len(curFood) == 0:
+            break
+        food_dist = []
+        for food in curFood:
+            food_dist.append(mahattan_dist(food, curPos))
 
+
+    score = 1/(1+score) + w2/(1+len(curFood)) + 5/(1+min_food_dist)
+    return score
 
 def mahattan_dist(pos1, pos2):
     dist = abs(pos1[0] - pos2[0]) + abs(pos1[1] - pos2[1])
