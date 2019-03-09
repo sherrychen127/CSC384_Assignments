@@ -83,7 +83,7 @@ class QueensConstraint(Constraint):
         qj = self.scope()[1]
         if not qi.isAssigned() or not qj.isAssigned():
             return True
-        return self.queensCheck(qi.getValue(),qj.getValue())
+        return self.queensCheck(qi.getValue(), qj.getValue())
 
     def queensCheck(self, vali, valj):
         diag = abs(vali - valj) == abs(self.i - self.j)
@@ -120,7 +120,23 @@ class QueensTableConstraint(TableConstraint):
     #the existing function signatures.
     def __init__(self, name, qi, qj, i, j):
         self._name = "Queen_" + name
-        util.raiseNotDefined()
+        #self.satAssignments
+        assignments = []
+        qi_dom = qi._dom
+        qj_dom = qj._dom
+        for col_i in qi_dom:
+            for col_j in qj_dom:
+                if col_i != col_j and abs(col_i - col_j) != abs(i-j):
+                    assignments.append([col_i, col_j])
+        TableConstraint.__init__(self, self._name, [qi, qj], assignments)
+
+
+
+
+
+        #self.satAssignments
+        #util.raiseNotDefined()
+
 
 
 class NeqConstraint(Constraint):
