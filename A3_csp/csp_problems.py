@@ -40,7 +40,7 @@ def nQueens(n, model):
     csp = CSP("{}-Queens".format(n), vars, cons)
     return csp
 
-def solve_nQueens(n, algo, allsolns, model='row', variableHeuristic='fixed', trace=False):
+def solve_nQueens(n, algo, allsolns, model='row', variableHeuristic='fixed', trace=True):  ####change to False
     '''Create and solve an nQueens CSP problem. The first
        parameer is 'n' the number of queens in the problem,
        The second specifies the search algorithm to use (one
