@@ -185,8 +185,6 @@ def FC(unAssignedVars, csp, allSolutions, trace):
         soln = []
         for v in csp.variables():
             soln.append((v, v.getValue()))
-
-        restore_pruned_val(csp)        #restore all pruned value
         return [soln]  #each call returns a list of solutions found
     bt_search.nodesExplored += 1
     solns = []         #so far we have no solutions recursive calls
@@ -196,31 +194,26 @@ def FC(unAssignedVars, csp, allSolutions, trace):
         if trace: print("==> {} = {}".format(nxtvar.name(), val))
         nxtvar.setValue(val)
         DWOoccured = False
-        #constraintsOK = True
         for cnstr in csp.constraintsOf(nxtvar):
             if cnstr.numUnassigned() == 1:
-                if FCCheck(cnstr, nxtvar, val) == 'DWO': #domain wiped out
+                if FCCheck(cnstr, nxtvar, val) == "DWO": #domain wiped out
                     DWOoccured = True
                     if trace: print("<==domain wiped out\n")
                     break
         if not DWOoccured: #not wiped out
-            new_solns = BT(unAssignedVars, csp, allSolutions, trace)
+            new_solns = FC(unAssignedVars, csp, allSolutions, trace)
             if new_solns:
                 solns.extend(new_solns)
             if len(solns) > 0 and not allSolutions: #only one soln
+                nxtvar.restoreValues(nxtvar, val)
                 break #don't bother with other values of nxtvar
                       #as we found a soln.
-        restore_pruned_val(csp) #restore pruned values all variables
+        nxtvar.restoreValues(nxtvar, val)
     nxtvar.unAssign()
     unAssignedVars.insert(nxtvar) #restore all pruned value
-    restore_pruned_val(csp)
     return solns
 
-#support function for FC
-def restore_pruned_val(csp):
-    for v in csp.variables():
-        v.restoreCurDomain()
-    return
+
 
 def GacEnforce(constraints, csp, reasonVar, reasonVal):
     '''Establish GAC on constraints by pruning values
@@ -234,46 +227,19 @@ def GacEnforce(constraints, csp, reasonVar, reasonVal):
     #your implementation for Question 3 goes in this function body
     #you must not change the function parameters
     #ensure that you return one of "OK" or "DWO"
-    GAC_queue = util.Queue()
-    for c in constraints:
-        GAC_queue.push(c)
-    while not GAC_queue.isEmpty():
-        c = GAC_queue.pop() #pop
-        for v in c.scope():
-            for d in v.curDomain():
-                #v.setValue(d)
-                #if not find_assignment(c):
-                if not c.hasSupport(v, d):
-                    #v.unAssign()
-                    v.pruneValue(d, reasonVar, reasonVal) #prune value d
-                    if v.curDomainSize() == 0:
-                        return 'DWO'
-                    for constr in csp.constraintsOf(v):
-                        if constr not in constraints and constr != c:
-                            GAC_queue.push(constr)
-    return 'OK'
 
-def find_assignment(cnstr):
-    #print(cnstr.numUnassigned())
-    if cnstr.numUnassigned() == 0:
-        if cnstr.check():
-            return True
-        return False
-    for var in cnstr.unAssignedVars():
-        for d in var.curDomain():
-            var.setValue(d)
-            if find_assignment(cnstr):
-                return True
-            var.unAssign()#reset variable
-    return False
-
-def prune_except(var, val):
-    for d in var.curDomain():
-        print(d)
-        print(var.curDomain())
-        if d != val:
-            var.pruneValue(d, var, val)
-    return
+    while not len(constraints) == 0:
+        constraint = constraints.pop(0)
+        for var in constraint.scope():
+            for d in var.curDomain():
+                if not constraint.hasSupport(var, d):
+                    var.pruneValue(d, reasonVar, reasonVal)
+                    if var.curDomainSize() == 0:
+                        return "DWO"
+                    for constr in csp.constraintsOf(var):
+                        if constr not in constraints and constr != constraint:
+                            constraints.append(constr)
+    return "OK"
 
 
 

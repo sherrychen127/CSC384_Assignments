@@ -15,18 +15,14 @@ def nQueens(n, model):
     if not model in ['table', 'alldiff', 'row']:
         print("Error wrong sudoku model specified {}. Must be one of {}").format(
             model, ['table', 'alldiff', 'row'])
-
     i = 0
     dom = []
     for i in range(n):
         dom.append(i+1)
-
     vars = []
     for i in dom:
         vars.append(Variable('Q{}'.format(i), dom))
-
     cons = []
-
     if model == 'alldiff':
         #task 4
         var_name = ['Q{}'.format(i) for i in dom]
@@ -35,8 +31,6 @@ def nQueens(n, model):
             for qj in range(qi+1, len(dom)):
                 con = NeqConstraint("C(Q{},Q{})".format(qi+1,qj+1), [vars[qi], vars[qj]], qi+1, qj+1)
                 cons.append(con) #binary not-equal constr
-
-
     else:
         constructor = QueensTableConstraint if model == 'table' else QueensConstraint
         for qi in range(len(dom)):
@@ -48,7 +42,7 @@ def nQueens(n, model):
     csp = CSP("{}-Queens".format(n), vars, cons)
     return csp
 
-def solve_nQueens(n, algo, allsolns, model='row', variableHeuristic='fixed', trace=True):  ####change to False
+def solve_nQueens(n, algo, allsolns, model='row', variableHeuristic='fixed', trace=False):  ####change to False
     '''Create and solve an nQueens CSP problem. The first
        parameer is 'n' the number of queens in the problem,
        The second specifies the search algorithm to use (one
@@ -192,12 +186,134 @@ def solve_schedules(schedule_problem, algo, allsolns,
     '''
 
     #BUILD your CSP here and store it in the varable csp
-    util.raiseNotDefined()
+
+    #build variable
+
+
+    timeslot = initialize_timeslot(schedule_problem.num_time_slots) #declare a dict of time slot with same number of time slots
+    classes_info = schedule_problem.classes
+    required_courses = schedule_problem.courses #required courses
+    lecture = []
+    tutorial = []
+    courses_lec = initialize_courses(required_courses) #initialize dictionary
+    courses_tut = initialize_courses(required_courses)
+    freq = schedule_problem.min_rest_frequency
+    connected_buildings = schedule_problem._connected_buildings
+
+    for class_info in classes_info:
+        info = class_info.split('-')
+        ts = int(info[2]) #char
+        cur = timeslot[ts-1]
+        cur.append(class_info) #construct domain
+        timeslot[ts-1] = cur
+        #print(timeslot[ts-1])
+        if info[3] == LEC:
+            lecture.append(class_info)
+            if info[0] in required_courses:
+                courses_lec[info[0]].append(class_info)  # all the classes for one course
+        else: #tut
+            tutorial.append(class_info)
+            if info[0] in required_courses:
+                courses_tut[info[0]].append(class_info)
+
+
+
+    variables = []
+    for i in timeslot.keys():
+        variables.append(Variable('V{}'.format(i+1), timeslot[i])) #time slot start from 1 -> i+1
+    c = []
+    c1 = NValuesConstraint('all required lectures', variables, lecture, len(required_courses), len(required_courses))
+    c2 = NValuesConstraint('all required tutorials', variables, tutorial, len(required_courses), len(required_courses))
+    c.append(c1)
+    c.append(c2)
+    for lec in courses_lec.keys():
+        c.append(NValuesConstraint('one lec per course', variables, courses_lec[lec], 1, 1))
+    for tut in courses_tut.keys():
+        c.append(NValuesConstraint('one tut per course', variables, courses_tut[tut], 1, 1))
+
+    #no class in appropriate frequency
+    if freq <= len(variables):
+        for i in range(len(variables)-freq+1):
+            c.append(NValuesConstraint('one NOCLASS per frequency', variables[i:i+freq], [NOCLASS], 1, freq))
+
+    csp = CSP('schedule', variables, c)
+
+    '''
+    v1 = Variable('V1', [1, 2])
+    v2 = Variable('V2', [1, 2])
+    v3 = Variable('V3', [1, 2, 3, 4, 5])
+    v4 = Variable('V4', [1, 2, 3, 4, 5])
+    v5 = Variable('V5', [1, 2, 3, 4, 5])
+    v6 = Variable('V6', [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    v7 = Variable('V7', [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    v8 = Variable('V8', [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    v9 = Variable('V9', [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    vars = [v1, v2, v3, v4, v5, v6, v7, v8, v9]
+    nv9 = NValuesConstraint('9', vars, [9], 4, 5)
+    nv1 = NValuesConstraint('1', vars, [1], 5, 5)
+    testcsp = CSP('test', vars, [nv1, nv9])
+    '''
 
     #invoke search with the passed parameters
-    solutions, num_nodes = bt_search(algo, csp, variableHeuristic, allsolns, trace)
+    solutions, num_nodes = bt_search(algo, csp, variableHeuristic, allsolns, False)
 
     #Convert each solution into a list of lists specifying a schedule
     #for each student in the format described above.
+    final_soln = []
+    for soln in solutions:
+        valid = True
+        for course in required_courses:
+            lec_index = -1
+            tut_index = -1
+            for i in range(len(soln)):
+                #ts = chr(i+1) #turn into char
+                (var, val) = soln[i]
+                if val == NOCLASS:
+                    continue
+                info = val.split('-')
+                #check tut and lecture time
+                if info[0] == course and info[3] == LEC:
+                    lec_index = int(info[2])
+                elif info[0] == course and info[3] == TUT:
+                    tut_index = int(info[2])
+                if tut_index < lec_index and tut_index > 0 and lec_index > 0:
+                    valid = False
+                    break
+            #check building
+            for i in range(len(soln)-1):
+                (var, val) = soln[i]
+                (var2, val2) = soln[i+1]
+                if val == NOCLASS or val2 == NOCLASS:
+                    continue
+                info = val.split('-')
+                build = info[1]
+                adj_info = val2.split('-')
+                adj_build = adj_info[1]
+                if adj_build not in connected_buildings[build]:
+                    valid = False
+                    break
+            if not valid:
+                break
+        if valid:
+            final_soln.append(soln)
+
+    #convert to list format
+    solns = []
+    for soln in final_soln:
+        solns.append([val for (var, val) in soln])
 
     #then return a list containing all converted solutions
+    return solns
+
+def initialize_courses(courses):
+    dict = {}
+    for course in courses:
+        dict[course] = []
+    return dict
+
+
+def initialize_timeslot(numOfTs):
+    dict = {}
+    for i in range(numOfTs):
+        dict[i] = [NOCLASS]
+    return dict

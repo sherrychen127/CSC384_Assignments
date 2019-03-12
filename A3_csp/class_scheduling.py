@@ -188,7 +188,7 @@ def check_valid_classes(problem, schedule):
     if time_slot == NOCLASS:
       continue
     if time_slot not in problem.classes:
-      print("Error solution invalid, non-existent class {} in the schedule".format(c))
+      print("Error solution invalid, non-existent class {} in the schedule".format(time_slot))
       return False
   return True
 

@@ -133,12 +133,6 @@ class QueensTableConstraint(TableConstraint):
 
 
 
-
-        #self.satAssignments
-        #util.raiseNotDefined()
-
-
-
 class NeqConstraint(Constraint):
     '''Neq constraint between two variables'''
     def __init__(self, name, scope, i, j):
@@ -284,9 +278,20 @@ class NValuesConstraint(Constraint):
         self._required = required_values
         self._lb = lower_bound
         self._ub = upper_bound
+        #self._scope = scope
 
     def check(self):
-        util.raiseNotDefined()
+        #lb <= # of var assigned 'required' <=up
+        if self.numUnassigned() > 0:
+            return True
+        NumAssignRequired = 0
+        for v in self.scope():
+            if v.isAssigned():
+                if v.getValue() in self._required:
+                    NumAssignRequired += 1
+        return NumAssignRequired <= self._ub and NumAssignRequired >= self._lb
+
+
 
     def hasSupport(self, var, val):
         '''check if var=val has an extension to an assignment of the
@@ -296,5 +301,29 @@ class NValuesConstraint(Constraint):
                  a similar approach is applicable here (but of course
                  there are other ways as well)
         '''
-        util.raiseNotDefined()
-        
+
+        if var not in self.scope():
+            return True   #var=val has support on any constraint it does not participate in
+        def valsNotEqual(l):
+            '''tests a list of assignments which are pairs (var,val)
+               to see if they can satisfy the all diff'''
+            vals = []
+            variables = []
+            for (var, val) in l:
+                variables.append(var)
+                if val in self._required:
+                    vals.append(val)
+            if len(l) == len(self.scope()): #all assigned
+                return len(vals) <= self._ub and len(vals) >= self._lb
+            remain = 0
+            for var in self.scope():
+                if var not in variables:
+                    for required_val in self._required:
+                        if required_val in var.curDomain():
+                            remain += 1
+            return len(vals) <= self._ub and len(vals) + remain >= self._lb
+            # if current assigned < self.ub, and if there is still possibility to exceed lb
+        varsToAssign = self.scope()
+        varsToAssign.remove(var)
+        x = findvals(varsToAssign, [(var, val)], valsNotEqual, valsNotEqual)
+        return x
