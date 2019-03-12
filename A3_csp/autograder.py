@@ -7,8 +7,6 @@ import argparse
 
 legalQs = ["q1", "q2", "q3", "q4", "q5", "q6"]
 tested = [False] * 5
-#added
-#tested[0] = True
 
 gradeMessage = ""
 grades = [0, 0, 0, 0, 0, 0]

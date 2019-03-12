@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6e896eda-9844-43ca-8e85-9c740759e6a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A3_csp/autograder.py" beforeDir="false" afterPath="$PROJECT_DIR$/A3_csp/autograder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/A3_csp/backtracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/A3_csp/backtracking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A3_csp/class_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/A3_csp/class_scheduling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A3_csp/constraints.py" beforeDir="false" afterPath="$PROJECT_DIR$/A3_csp/constraints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A3_csp/csp_problems.py" beforeDir="false" afterPath="$PROJECT_DIR$/A3_csp/csp_problems.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/A3_csp/backtracking.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="93" selection-start-line="93" selection-end-line="93" />
+            <state relative-caret-position="401">
+              <caret line="286" column="64" selection-start-line="286" selection-start-column="64" selection-end-line="286" selection-end-column="64" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -31,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/A3_csp/class_scheduling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="113" column="5" lean-forward="true" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+            <state relative-caret-position="2490">
+              <caret line="166" column="38" lean-forward="true" selection-start-line="166" selection-start-column="38" selection-end-line="166" selection-end-column="38" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -55,7 +53,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/A3_csp/constraints.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1323">
+            <state relative-caret-position="542">
               <caret line="314" column="36" selection-start-line="314" selection-start-column="36" selection-end-line="314" selection-end-column="36" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
@@ -67,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/A3_csp/autograder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="663" selection-start-line="663" selection-end-line="663" />
+            <state relative-caret-position="152">
+              <caret line="637" column="40" lean-forward="true" selection-start-line="637" selection-start-column="40" selection-end-line="637" selection-end-column="40" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -80,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/A3_csp/nqueens.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
+              <caret column="19" selection-start-column="19" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -88,7 +86,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/A3_csp/csp_problems.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4070">
+            <state relative-caret-position="360">
               <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -137,6 +135,7 @@
       <find>domain</find>
       <find>print</find>
       <find>valsNotEqual</find>
+      <find>c7</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -148,17 +147,17 @@
         <option value="$PROJECT_DIR$/A2_multiagent/pacman.py" />
         <option value="$PROJECT_DIR$/A2_multiagent/multiAgents.py" />
         <option value="$PROJECT_DIR$/A3_csp/nqueens.py" />
-        <option value="$PROJECT_DIR$/A3_csp/autograder.py" />
-        <option value="$PROJECT_DIR$/A3_csp/backtracking.py" />
         <option value="$PROJECT_DIR$/A3_csp/class_scheduling.py" />
         <option value="$PROJECT_DIR$/A3_csp/csp_problems.py" />
         <option value="$PROJECT_DIR$/A3_csp/constraints.py" />
+        <option value="$PROJECT_DIR$/A3_csp/backtracking.py" />
+        <option value="$PROJECT_DIR$/A3_csp/autograder.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="481" />
-    <option name="y" value="33" />
+    <option name="x" value="387" />
+    <option name="y" value="22" />
     <option name="width" value="893" />
     <option name="height" value="711" />
   </component>
@@ -292,7 +291,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="481" y="33" width="893" height="711" extended-state="0" />
+    <frame x="387" y="22" width="893" height="711" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13302752" />
@@ -343,7 +342,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/A3_csp/autograder.py</url>
-          <line>663</line>
+          <line>661</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -419,16 +418,26 @@
     <entry file="file://$PROJECT_DIR$/A3_csp/nqueens.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/A3_csp/autograder.py">
+    <entry file="file://$PROJECT_DIR$/A3_csp/csp_problems.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="663" selection-start-line="663" selection-end-line="663" />
+        <state relative-caret-position="360">
+          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/A3_csp/constraints.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="314" column="36" selection-start-line="314" selection-start-column="36" selection-end-line="314" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -445,38 +454,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/A3_csp/backtracking.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        <state relative-caret-position="401">
+          <caret line="286" column="64" selection-start-line="286" selection-start-column="64" selection-end-line="286" selection-end-column="64" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/A3_csp/csp_problems.py">
+    <entry file="file://$PROJECT_DIR$/A3_csp/autograder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4070">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+        <state relative-caret-position="152">
+          <caret line="637" column="40" lean-forward="true" selection-start-line="637" selection-start-column="40" selection-end-line="637" selection-end-column="40" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/A3_csp/constraints.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1323">
-          <caret line="314" column="36" selection-start-line="314" selection-start-column="36" selection-end-line="314" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/A3_csp/class_scheduling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="113" column="5" lean-forward="true" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+        <state relative-caret-position="2490">
+          <caret line="166" column="38" lean-forward="true" selection-start-line="166" selection-start-column="38" selection-end-line="166" selection-end-column="38" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

@@ -282,9 +282,9 @@ def GAC(unAssignedVars, csp, allSolutions, trace):
         nxtvar.setValue(val)
         GACQueue = [constr for constr in csp.constraintsOf(nxtvar)] #construct GAC queue if constraints
         if GacEnforce(GACQueue, csp, nxtvar, val) != 'DWO': # "ok"
-            GAC(unAssignedVars, csp, allSolutions, trace)
+            #GAC(unAssignedVars, csp, allSolutions, trace)
             # find solutions:
-            new_solns = BT(unAssignedVars, csp, allSolutions, trace)
+            new_solns = GAC(unAssignedVars, csp, allSolutions, trace) #### not sure
             if new_solns:
                 solns.extend(new_solns)
                 if len(solns) > 0 and not allSolutions:
